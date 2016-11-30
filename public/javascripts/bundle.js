@@ -21663,29 +21663,33 @@
 	        { className: "background-container" },
 	        _react2.default.createElement(
 	          "div",
-	          { className: "weather-box" },
+	          { id: "weather-box", className: this.props.weather },
 	          _react2.default.createElement(
 	            "div",
-	            { className: "title" },
-	            "Your Local Weather"
-	          ),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "info-box" },
+	            { className: "inner-box" },
 	            _react2.default.createElement(
 	              "div",
-	              null,
-	              this.props.name
+	              { className: "title" },
+	              "Your Local Weather"
 	            ),
 	            _react2.default.createElement(
 	              "div",
-	              null,
-	              this.props.weather
-	            ),
-	            _react2.default.createElement(
-	              "div",
-	              null,
-	              this.props.temperature
+	              { className: "info-box" },
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                this.props.name
+	              ),
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                this.props.weather
+	              ),
+	              _react2.default.createElement(
+	                "div",
+	                null,
+	                this.props.temperature
+	              )
 	            )
 	          ),
 	          _react2.default.createElement("input", { className: "city-input", placeholder: "Enter your city..." }),
@@ -21694,8 +21698,7 @@
 	            { className: "go-btn", onClick: this.props.oC },
 	            "Go"
 	          )
-	        ),
-	        _react2.default.createElement("div", { id: "background", className: this.props.weather })
+	        )
 	      );
 	    }
 	  }]);
