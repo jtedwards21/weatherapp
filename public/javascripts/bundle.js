@@ -21549,32 +21549,50 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var onChange = function onChange(data) {
-	  _reactDom2.default.render(_react2.default.createElement(_weather2.default, { data: data }), document.getElementById("content"));
-	};
-
 	var Start = function (_React$Component) {
 	  _inherits(Start, _React$Component);
 
-	  function Start() {
+	  function Start(props) {
 	    _classCallCheck(this, Start);
 
-	    return _possibleConstructorReturn(this, (Start.__proto__ || Object.getPrototypeOf(Start)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (Start.__proto__ || Object.getPrototypeOf(Start)).call(this, props));
+
+	    _this.state = {
+	      city: "",
+	      name: ""
+	    };
+
+	    _this.updated = false;
+
+	    return _this;
 	  }
 
 	  _createClass(Start, [{
-	    key: "getWeather",
-	    value: function getWeather(city) {
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      var city = this.props.city;
 	      var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
 	      _axios2.default.get(url).then(function (data) {
-	        return onChange(data);
+	        _this2.processData(data).bind(_this2);
 	      });
+	    }
+	  }, {
+	    key: "processData",
+	    value: function processData(data) {
+	      var name = data.data.name;
+	      this.setState({ name: name });
+	    }
+	  }, {
+	    key: "updateCity",
+	    value: function updateCity() {
+	      console.log('dog');
 	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      this.getWeather(this.props.city);
-	      return _react2.default.createElement("div", null);
+	      return _react2.default.createElement(_weather2.default, { name: this.state.name, oC: this.updateCity.bind(this) });
 	    }
 	  }]);
 
@@ -21603,10 +21621,6 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _start = __webpack_require__(178);
-
-	var _start2 = _interopRequireDefault(_start);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21615,46 +21629,28 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var onChange = function onChange(city) {
-	  _reactDom2.default.render(_react2.default.createElement(_start2.default, { city: city }), document.getElementById("content"));
-	};
-
 	var Weather = function (_React$Component) {
 	  _inherits(Weather, _React$Component);
 
-	  function Weather() {
+	  function Weather(props) {
 	    _classCallCheck(this, Weather);
 
-	    var _this = _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).call(this));
+	    var _this = _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).call(this, props));
 
-	    _this.state = {};
+	    _this.state = {
+	      name: "--",
+	      description: "--",
+	      weather: "--",
+	      temperature: "--",
+	      country: "--",
+	      data: {}
+	    };
+
 	    return _this;
 	  }
+	  //Write a componentDidMount instead of playing with these functions
 
 	  _createClass(Weather, [{
-	    key: "getMainWeather",
-	    value: function getMainWeather() {
-	      if (this.props.data != undefined) {
-	        var d = this.props.data;
-	        var main = d.weather[0];
-	        var mainWeather = main.main;
-	      }
-	    }
-	  }, {
-	    key: "getTemp",
-	    value: function getTemp() {
-	      if (this.props.data != undefined) {
-	        var d = this.props.data;
-	        var base = d.base;
-	        var temperature = base.main.temp;
-	      }
-	    }
-	  }, {
-	    key: "updateCity",
-	    value: function updateCity() {
-	      //TO DO
-	    }
-	  }, {
 	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -21674,22 +21670,27 @@
 	            _react2.default.createElement(
 	              "div",
 	              null,
-	              this.getMainWeather(this)
+	              this.props.name
 	            ),
 	            _react2.default.createElement(
 	              "div",
 	              null,
-	              this.getTemp.bind(this)
+	              this.state.weather
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              null,
+	              this.state.temperature
 	            )
 	          ),
 	          _react2.default.createElement("input", { className: "city-input", placeholder: "Enter your city..." }),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "go-btn", onClick: this.updateCity.bind(this) },
+	            { className: "go-btn", onClick: this.props.oC },
 	            "Go"
 	          )
 	        ),
-	        _react2.default.createElement("div", { id: "background", className: this.getMainWeather.bind(this) })
+	        _react2.default.createElement("div", { id: "background", className: this.state.weather })
 	      );
 	    }
 	  }]);

@@ -2,7 +2,7 @@
   font-family: Jambo;
   font-style: normal;
   font-weight: normal;
-  src: url("stylesheets/Jambo.otf") format("opentype");
+  src: url("Jambo.otf") format("opentype");
 }
 
 body {

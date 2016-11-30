@@ -10,7 +10,7 @@ export default class Start extends React.Component {
 
     this.state = {
       city: "",
-      data: []
+      name: ""
     };
 
     this.updated = false;
@@ -20,15 +20,18 @@ export default class Start extends React.Component {
 　　　　var city = this.props.city;
     var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
     axios.get(url)
-    .then(data => {this.setState({data:data});
-       });
+    .then(data => {this.processData(data).bind(this)});
+  }
+  processData(data){
+    var name = data.data.name
+    this.setState({name:name});
   }
   updateCity() {
     console.log('dog');
   }
   render() {
     return (
-      <Weather data={this.state.data} oC={this.updateCity.bind(this)} />
+      <Weather name={this.state.name} oC={this.updateCity.bind(this)} />
     );
   }
 }
