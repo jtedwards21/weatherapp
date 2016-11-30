@@ -1,8 +1,16 @@
+@font-face {
+  font-family: Jambo;
+  font-style: normal;
+  font-weight: normal;
+  src: url("stylesheets/Jambo.otf") format("opentype");
+}
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.title {
+  font-family: Jambo;
+  font-size: 2em;
 }
+

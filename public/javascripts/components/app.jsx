@@ -1,8 +1,8 @@
 import React from "react";
-import Search from "./search";
+import Weather from "./weather";
 
 export default function App () {
   return (
-    <Search />
+    <Weather />
   );
 }
