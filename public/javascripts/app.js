@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "components/app";
+import Start from "components/start";
 
-ReactDOM.render(<App />, document.getElementById("content"));
+var city = "Shanghai";
+
+ReactDOM.render(<Start city={city} />, document.getElementById("content"));

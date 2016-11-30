@@ -1,9 +1,9 @@
 import React from "react";
+import ReactDOM from "react-dom";
+import Start from "./start";
 
-var appKey="92ce1e2eee7c91cb43470cada0b7c4d8"
-
-var onChange = function(mainWeather, temperature){
-  <Weather mainWeather={mainWeather} temperature={temperature}/>
+var onChange = function(city){
+  ReactDOM.render(<Start city={city}/>, document.getElementById("content"));
 }
 
 export default class Weather extends React.Component {
@@ -13,17 +13,18 @@ export default class Weather extends React.Component {
     this.state = {
     };
   }
-  processWeatherData(d){
+  getMainWeather(){
+    var d = this.props.data;
     var main = d.weather[0];
     var mainWeather = main.main;
+  }
+  getTemp(){
+    var d = this.props.data;
     var base = d.base;
     var temperature = base.main.temp;
-    onChange(mainWeather, temperature)
   }
-  getWeather(city){
-    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
-    axios.get(url)
-    .then(data => this.processWeatherData(data));
+  updateCity(){
+	//TO DO
   }
   render() {
     return (
@@ -31,13 +32,13 @@ export default class Weather extends React.Component {
         <div className="weather-box">
           <div className="title">Your Local Weather</div>
 	  <div className="info-box">
-	    <div>{this.props.mainWeather}</div>
-	    <div>{this.props.temperature}</div>
+	    <div>{this.getMainWeather(this)}</div>
+	    <div>{this.getTemp.bind(this)}</div>
 	  </div>
           <input className="city-input" placeholder="Enter your city..." />
-	  <div className="go-btn">go</div>
+	  <div className="go-btn" onClick={this.updateCity.bind(this)}>Go</div>
         </div>
-	<div id="background" className={this.props.mainWeather}></div>
+	<div id="background" className={this.getMainWeather.bind(this)}></div>
       </div>
     );
   }
