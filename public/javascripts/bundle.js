@@ -21559,7 +21559,11 @@
 
 	    _this.state = {
 	      city: "",
-	      name: ""
+	      name: "",
+	      weather: "",
+	      description: "",
+	      country: "",
+	      temperature: 0
 	    };
 
 	    _this.updated = false;
@@ -21581,8 +21585,15 @@
 	  }, {
 	    key: "processData",
 	    value: function processData(data) {
+	      console.log(data);
 	      var name = data.data.name;
-	      this.setState({ name: name });
+	      var weatherObject = data.data.weather[0];
+	      var weather = weatherObject.main;
+	      console.log(weather);
+	      var description = weatherObject.description;
+	      var country = data.data.sys.country;
+	      var temperature = data.data.main.temp;
+	      this.setState({ name: name, weather: weather, description: description, country: country, temperature: temperature });
 	    }
 	  }, {
 	    key: "updateCity",
@@ -21592,7 +21603,7 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      return _react2.default.createElement(_weather2.default, { name: this.state.name, oC: this.updateCity.bind(this) });
+	      return _react2.default.createElement(_weather2.default, { name: this.state.name, weather: this.state.weather, description: this.state.description, country: this.state.country, temperature: this.state.temperature, oC: this.updateCity.bind(this) });
 	    }
 	  }]);
 
@@ -21637,14 +21648,7 @@
 
 	    var _this = _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).call(this, props));
 
-	    _this.state = {
-	      name: "--",
-	      description: "--",
-	      weather: "--",
-	      temperature: "--",
-	      country: "--",
-	      data: {}
-	    };
+	    _this.state = {};
 
 	    return _this;
 	  }
@@ -21675,12 +21679,12 @@
 	            _react2.default.createElement(
 	              "div",
 	              null,
-	              this.state.weather
+	              this.props.weather
 	            ),
 	            _react2.default.createElement(
 	              "div",
 	              null,
-	              this.state.temperature
+	              this.props.temperature
 	            )
 	          ),
 	          _react2.default.createElement("input", { className: "city-input", placeholder: "Enter your city..." }),
@@ -21690,7 +21694,7 @@
 	            "Go"
 	          )
 	        ),
-	        _react2.default.createElement("div", { id: "background", className: this.state.weather })
+	        _react2.default.createElement("div", { id: "background", className: this.props.weather })
 	      );
 	    }
 	  }]);
