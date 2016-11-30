@@ -9,12 +9,13 @@ export default class Start extends React.Component {
     super(props);
 
     this.state = {
-      city: "",
-      name: "",
-      weather: "",
-      description: "",
-      country: "",
-      temperature: 0
+      city: "--",
+      name: "--",
+      weather: "--",
+      description: "--",
+      country: "--",
+      temperature: 0,
+      bg: "blank"
     };
 
     this.updated = false;
@@ -35,14 +36,14 @@ export default class Start extends React.Component {
     var description = weatherObject.description;
     var country = data.data.sys.country;
     var temperature = data.data.main.temp;
-    this.setState({name:name, weather:weather, description:description, country:country, temperature:temperature});
+    this.setState({name:name, weather:weather, description:description, country:country, temperature:temperature, bg: weather});
   }
   updateCity() {
     console.log('dog');
   }
   render() {
     return (
-      <Weather name={this.state.name} weather={this.state.weather} description={this.state.description} country={this.state.country} temperature={this.state.temperature} oC={this.updateCity.bind(this)} />
+      <Weather name={this.state.name} weather={this.state.weather} description={this.state.description} country={this.state.country} temperature={this.state.temperature} bg={this.state.bg} oC={this.updateCity.bind(this)} />
     );
   }
 }

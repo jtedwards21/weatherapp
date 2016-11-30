@@ -21558,12 +21558,13 @@
 	    var _this = _possibleConstructorReturn(this, (Start.__proto__ || Object.getPrototypeOf(Start)).call(this, props));
 
 	    _this.state = {
-	      city: "",
-	      name: "",
-	      weather: "",
-	      description: "",
-	      country: "",
-	      temperature: 0
+	      city: "--",
+	      name: "--",
+	      weather: "--",
+	      description: "--",
+	      country: "--",
+	      temperature: 0,
+	      bg: "blank"
 	    };
 
 	    _this.updated = false;
@@ -21593,7 +21594,7 @@
 	      var description = weatherObject.description;
 	      var country = data.data.sys.country;
 	      var temperature = data.data.main.temp;
-	      this.setState({ name: name, weather: weather, description: description, country: country, temperature: temperature });
+	      this.setState({ name: name, weather: weather, description: description, country: country, temperature: temperature, bg: weather });
 	    }
 	  }, {
 	    key: "updateCity",
@@ -21603,7 +21604,7 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      return _react2.default.createElement(_weather2.default, { name: this.state.name, weather: this.state.weather, description: this.state.description, country: this.state.country, temperature: this.state.temperature, oC: this.updateCity.bind(this) });
+	      return _react2.default.createElement(_weather2.default, { name: this.state.name, weather: this.state.weather, description: this.state.description, country: this.state.country, temperature: this.state.temperature, bg: this.state.bg, oC: this.updateCity.bind(this) });
 	    }
 	  }]);
 

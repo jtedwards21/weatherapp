@@ -22,30 +22,33 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
+  background-color: #3B3639;
 }
 
 .background-container {
   position: absolute;
-  margin: 0;
+  margin-top: 30vh;
   top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
+  left: 40vw;
 }
 
 .weather-box{
-  height: 30vh;
-  width: 20vw;
-  margin: 0 auto;
+  height: 40vh;
+  width: 30vw;
   float: none;
-  background-color: red;
   text-align: center;
   border-radius: 16px;
-  padding-top: 10px;
-  margin-top: 20vh;
-　　
-  
+  position: absolute;
+  z-index: 3;
+}
+
+#background{
+  height: 40vh;
+  width: 30vw;
+  float: none;
+  border-radius: 16px;
+  position: absolute;
+  z-index: 2;
 }
 
 .title {
@@ -53,4 +56,45 @@ body {
   font-size: 2em;
   margin-bottom: 20px;
 }
+
+.blank {
+  background-color: white;
+}
+
+.Clear{
+  border-radius: 16px;
+  background-image: url(../img/clear.jpg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.Fog{
+  background-image: url(../img/fog.jpg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.Mist{
+  background-image: url(../img/mist.jpg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.Snow{
+  background-image: url(../img/snow.jpg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.Rain{
+  background-image: url(../img/rain.jpg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 
