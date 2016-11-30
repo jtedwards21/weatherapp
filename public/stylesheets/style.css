@@ -7,10 +7,50 @@
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+　　position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#content {
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.background-container {
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
+.weather-box{
+  height: 30vh;
+  width: 20vw;
+  margin: 0 auto;
+  float: none;
+  background-color: red;
+  text-align: center;
+  border-radius: 16px;
+  padding-top: 10px;
+  margin-top: 20vh;
+　　
+  
 }
 
 .title {
   font-family: Jambo;
   font-size: 2em;
+  margin-bottom: 20px;
 }
 
