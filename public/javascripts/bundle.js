@@ -21564,7 +21564,7 @@
 	      description: "--",
 	      country: "--",
 	      temperature: 0,
-	      bg: "blank"
+	      bg: "../img/Clear.png"
 	    };
 
 	    _this.updated = false;
@@ -21590,11 +21590,11 @@
 	      var name = data.data.name;
 	      var weatherObject = data.data.weather[0];
 	      var weather = weatherObject.main;
-	      console.log(weather);
+	      var bg = "../img/" + weather + ".png";
 	      var description = weatherObject.description;
 	      var country = data.data.sys.country;
 	      var temperature = data.data.main.temp;
-	      this.setState({ name: name, weather: weather, description: description, country: country, temperature: temperature, bg: weather });
+	      this.setState({ name: name, weather: weather, description: description, country: country, temperature: temperature, bg: bg });
 	    }
 	  }, {
 	    key: "updateCity",
@@ -21660,40 +21660,55 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "div",
-	        { id: "weather-box", className: this.props.weather },
+	        { id: "weather-box" },
+	        "\u3000\u3000",
 	        _react2.default.createElement(
 	          "div",
-	          { className: "inner-box" },
+	          { className: "row" },
 	          _react2.default.createElement(
 	            "div",
-	            { className: "title" },
-	            "Your Local Weather"
-	          ),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "info-box" },
+	            { className: "inner-box col-md-6 col-md-offset-3" },
 	            _react2.default.createElement(
 	              "div",
-	              null,
-	              this.props.name
+	              { className: "title text-center" },
+	              "Your Local Weather"
 	            ),
 	            _react2.default.createElement(
 	              "div",
-	              null,
-	              this.props.weather
-	            ),
-	            _react2.default.createElement(
-	              "div",
-	              null,
-	              this.props.temperature
+	              { className: "info-box" },
+	              _react2.default.createElement(
+	                "div",
+	                { className: "text-center" },
+	                this.props.name
+	              ),
+	              _react2.default.createElement(
+	                "div",
+	                { className: "text-center" },
+	                this.props.weather
+	              ),
+	              _react2.default.createElement(
+	                "div",
+	                { className: "text-center" },
+	                this.props.temperature
+	              ),
+	              _react2.default.createElement(
+	                "div",
+	                { className: "text-center" },
+	                _react2.default.createElement("input", { className: "city-input", placeholder: "Enter your city..." })
+	              ),
+	              _react2.default.createElement(
+	                "div",
+	                { className: "text-center go-btn", onClick: this.props.oC },
+	                "Go"
+	              ),
+	              "\u3000\u3000    ",
+	              _react2.default.createElement(
+	                "div",
+	                { className: "text-center" },
+	                _react2.default.createElement("img", { id: "weather-img", src: this.props.bg })
+	              )
 	            )
 	          )
-	        ),
-	        _react2.default.createElement("input", { className: "city-input", placeholder: "Enter your city..." }),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "go-btn", onClick: this.props.oC },
-	          "Go"
 	        )
 	      );
 	    }

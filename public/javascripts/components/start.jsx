@@ -15,7 +15,7 @@ export default class Start extends React.Component {
       description: "--",
       country: "--",
       temperature: 0,
-      bg: "blank"
+      bg: "../img/Clear.png"
     };
 
     this.updated = false;
@@ -32,11 +32,11 @@ export default class Start extends React.Component {
     var name = data.data.name
     var weatherObject = data.data.weather[0];
     var weather = weatherObject.main;
-    console.log(weather);
+    var bg = "../img/" + weather + ".png";
     var description = weatherObject.description;
     var country = data.data.sys.country;
     var temperature = data.data.main.temp;
-    this.setState({name:name, weather:weather, description:description, country:country, temperature:temperature, bg: weather});
+    this.setState({name:name, weather:weather, description:description, country:country, temperature:temperature, bg: bg});
   }
   updateCity() {
     console.log('dog');
