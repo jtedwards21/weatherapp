@@ -14,7 +14,6 @@ export default class Weather extends React.Component {
   
   render() {
     return (
-      <div className="background-container">
         <div id="weather-box" className={this.props.weather}>
           <div className="inner-box">
             <div className="title">Your Local Weather</div>
@@ -27,7 +26,6 @@ export default class Weather extends React.Component {
           <input className="city-input" placeholder="Enter your city..." />
 	  <div className="go-btn" onClick={this.props.oC}>Go</div>
         </div>
-      </div>
     );
   }
 }

@@ -7,30 +7,14 @@
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-　　position: absolute;
   margin: 0;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
 }
 
 #content {
-  position: absolute;
-  margin: 0;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  margin: 0　auto;
   background-color: white;
 }
 
-.background-container {
-  position: absolute;
-  margin-top: 30vh;
-  width: 100vw;
-  height: 100vh;
-}
 
 #weather-box{
   height: 400px;
@@ -40,6 +24,9 @@ body {
   border-radius: 50%;
   z-index: 3;
   margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
 }
 
 .inner-box {

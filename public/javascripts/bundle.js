@@ -21660,44 +21660,40 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "div",
-	        { className: "background-container" },
+	        { id: "weather-box", className: this.props.weather },
 	        _react2.default.createElement(
 	          "div",
-	          { id: "weather-box", className: this.props.weather },
+	          { className: "inner-box" },
 	          _react2.default.createElement(
 	            "div",
-	            { className: "inner-box" },
+	            { className: "title" },
+	            "Your Local Weather"
+	          ),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "info-box" },
 	            _react2.default.createElement(
 	              "div",
-	              { className: "title" },
-	              "Your Local Weather"
+	              null,
+	              this.props.name
 	            ),
 	            _react2.default.createElement(
 	              "div",
-	              { className: "info-box" },
-	              _react2.default.createElement(
-	                "div",
-	                null,
-	                this.props.name
-	              ),
-	              _react2.default.createElement(
-	                "div",
-	                null,
-	                this.props.weather
-	              ),
-	              _react2.default.createElement(
-	                "div",
-	                null,
-	                this.props.temperature
-	              )
+	              null,
+	              this.props.weather
+	            ),
+	            _react2.default.createElement(
+	              "div",
+	              null,
+	              this.props.temperature
 	            )
-	          ),
-	          _react2.default.createElement("input", { className: "city-input", placeholder: "Enter your city..." }),
-	          _react2.default.createElement(
-	            "div",
-	            { className: "go-btn", onClick: this.props.oC },
-	            "Go"
 	          )
+	        ),
+	        _react2.default.createElement("input", { className: "city-input", placeholder: "Enter your city..." }),
+	        _react2.default.createElement(
+	          "div",
+	          { className: "go-btn", onClick: this.props.oC },
+	          "Go"
 	        )
 	      );
 	    }
