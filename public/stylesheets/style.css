@@ -28,16 +28,16 @@ body {
 }
 
 
-.boxes-container {
-  display: inline-flex;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
+.info-box {
+  font-family: Sugar;
+  font-size: 1.5em;
+  display: block;
+  color: orange;
 }
 
-.info-box {
-  font-family: Sugar
-  font-size; 1.5em;
+.info-box div {
+  margin-bottom: 20px;
+  font-size: 1.5em;
 }
 
 #basic-addon1 {
@@ -48,10 +48,14 @@ body {
   font-family: Jambo;
   font-size: 2em;
   margin-top: 30px;
-　　color: #EE820B;
+  margin-bottom: 20px;
+}
+
+#w-app{
+  color: orange;
 }
 
 #weather-img {
-  width: 100px;
+  width: 200px;
 }
 

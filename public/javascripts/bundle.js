@@ -21667,10 +21667,10 @@
 	          { className: "row" },
 	          _react2.default.createElement(
 	            "div",
-	            { className: "inner-box col-md-6 col-md-offset-3" },
+	            { className: "inner-box col-md-4 col-md-offset-4" },
 	            _react2.default.createElement(
 	              "div",
-	              { className: "title text-center" },
+	              { id: "w-app", className: "title text-center" },
 	              "Your Local Weather"
 	            ),
 	            _react2.default.createElement(
@@ -21678,12 +21678,16 @@
 	              { className: "info-box" },
 	              _react2.default.createElement(
 	                "div",
-	                { className: "input-group" },
-	                _react2.default.createElement("input", { type: "text", className: "form-control city-input", "aria-describedby": "basic-addon1", placeholder: "Enter your city..." }),
+	                { className: "" },
 	                _react2.default.createElement(
-	                  "span",
-	                  { className: "input-group-addon", onClick: this.props.oC, id: "basic-addon1" },
-	                  "Go"
+	                  "div",
+	                  { className: "input-group" },
+	                  _react2.default.createElement("input", { type: "text", className: "form-control city-input", "aria-describedby": "basic-addon1", placeholder: "Enter your city..." }),
+	                  _react2.default.createElement(
+	                    "span",
+	                    { className: "input-group-addon", onClick: this.props.oC, id: "basic-addon1" },
+	                    "Go"
+	                  )
 	                )
 	              ),
 	              _react2.default.createElement(
