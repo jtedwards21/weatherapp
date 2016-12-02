@@ -5,6 +5,13 @@
   src: url("Jambo.otf") format("opentype");
 }
 
+@font-face {
+  font-family: Sugar;
+  font-style: normal;
+  font-weight: normal;
+  src: url("Sugar.ttf") format("truetype");
+}
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
@@ -28,11 +35,20 @@ body {
   width: 80%;
 }
 
+.info-box {
+  font-family: Sugar
+  font-size; 1.5em;
+}
+
+#basic-addon1 {
+  cursor: pointer;
+}
 
 .title {
   font-family: Jambo;
   font-size: 2em;
   margin-top: 30px;
+　　color: #EE820B;
 }
 
 #weather-img {

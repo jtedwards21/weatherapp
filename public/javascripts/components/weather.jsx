@@ -19,11 +19,13 @@ export default class Weather extends React.Component {
             <div className="inner-box col-md-6 col-md-offset-3">
               <div className="title text-center">Your Local Weather</div>
 	      <div className="info-box">
+		<div className="input-group">
+		  <input type="text" className="form-control city-input" aria-describedby="basic-addon1"  placeholder="Enter your city..." />
+		  <span className="input-group-addon" onClick={this.props.oC} id="basic-addon1">Go</span>
+		</div>
                 <div className="text-center">{this.props.name}</div>
 	        <div className="text-center">{this.props.weather}</div>
 	        <div className="text-center">{this.props.temperature}</div>
-		<div className="text-center"><input className="city-input" placeholder="Enter your city..." /></div>
-		<div className="text-center go-btn" onClick={this.props.oC}>Go</div>
 	  　　    <div className="text-center"><img id="weather-img" src={this.props.bg} /></div>
 	      </div>
 	    </div>

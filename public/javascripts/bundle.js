@@ -21678,6 +21678,16 @@
 	              { className: "info-box" },
 	              _react2.default.createElement(
 	                "div",
+	                { className: "input-group" },
+	                _react2.default.createElement("input", { type: "text", className: "form-control city-input", "aria-describedby": "basic-addon1", placeholder: "Enter your city..." }),
+	                _react2.default.createElement(
+	                  "span",
+	                  { className: "input-group-addon", onClick: this.props.oC, id: "basic-addon1" },
+	                  "Go"
+	                )
+	              ),
+	              _react2.default.createElement(
+	                "div",
 	                { className: "text-center" },
 	                this.props.name
 	              ),
@@ -21690,16 +21700,6 @@
 	                "div",
 	                { className: "text-center" },
 	                this.props.temperature
-	              ),
-	              _react2.default.createElement(
-	                "div",
-	                { className: "text-center" },
-	                _react2.default.createElement("input", { className: "city-input", placeholder: "Enter your city..." })
-	              ),
-	              _react2.default.createElement(
-	                "div",
-	                { className: "text-center go-btn", onClick: this.props.oC },
-	                "Go"
 	              ),
 	              "\u3000\u3000    ",
 	              _react2.default.createElement(
