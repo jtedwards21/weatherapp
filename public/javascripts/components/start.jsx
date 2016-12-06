@@ -15,7 +15,10 @@ export default class Start extends React.Component {
       description: "--",
       country: "--",
       temperature: 0,
-      bg: "../img/Clear.png"
+      bg: "../img/Clear.png",
+　　　　　　celcius: 0,
+      fahrenheit: 0,
+      unit: "C"
     };
 
     this.updated = false;
@@ -36,14 +39,26 @@ export default class Start extends React.Component {
     var description = weatherObject.description;
     var country = data.data.sys.country;
     var temperature = data.data.main.temp;
-    this.setState({name:name, weather:weather, description:description, country:country, temperature:temperature, bg: bg});
+    var celcius = temperature - 273.15;
+    var fahrenheit = celcius + 40;
+    fahrenheit = fahrenheit * 1.8;
+    this.setState({name:name, weather:weather, description:description, country:country, temperature:temperature, bg: bg, celcius: celcius, fahrenheit: fahrenheit});
   }
   updateCity() {
     console.log('dog');
   }
+  changeUnit() {
+    if(this.state.unit == "C"){
+      this.setState({unit: "F"});
+    } else {
+	this.setState({unit: "C"})
+    }
+  }
   render() {
+    var setUnit;
+    (this.state.unit == "C") ? setUnit = this.state.celcius : setUnit = this.state.fahrenheit;
     return (
-      <Weather name={this.state.name} weather={this.state.weather} description={this.state.description} country={this.state.country} temperature={this.state.temperature} bg={this.state.bg} oC={this.updateCity.bind(this)} />
+      <Weather name={this.state.name} weather={this.state.weather} description={this.state.description} country={this.state.country} temperature={setUnit} unit={this.state.unit} handleClick={this.changeUnit.bind(this)} bg={this.state.bg} oC={this.updateCity.bind(this)} />
     );
   }
 }

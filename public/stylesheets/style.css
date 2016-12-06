@@ -18,6 +18,10 @@ body {
 
 }
 
+#background {
+  background-color: #7F695A;
+}
+
 #content {
   margin: 0　auto;
 　　height: 100%;
@@ -57,5 +61,14 @@ body {
 
 #weather-img {
   width: 200px;
+}
+
+#orange-bar {
+  border: 1px solid orange;
+}
+
+#orange-button {
+  border: 1px solid orange;
+  background-color: orange;
 }
 

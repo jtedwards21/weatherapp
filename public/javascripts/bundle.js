@@ -21564,7 +21564,10 @@
 	      description: "--",
 	      country: "--",
 	      temperature: 0,
-	      bg: "../img/Clear.png"
+	      bg: "../img/Clear.png",
+	      celcius: 0,
+	      fahrenheit: 0,
+	      unit: "C"
 	    };
 
 	    _this.updated = false;
@@ -21594,7 +21597,10 @@
 	      var description = weatherObject.description;
 	      var country = data.data.sys.country;
 	      var temperature = data.data.main.temp;
-	      this.setState({ name: name, weather: weather, description: description, country: country, temperature: temperature, bg: bg });
+	      var celcius = temperature - 273.15;
+	      var fahrenheit = celcius + 40;
+	      fahrenheit = fahrenheit * 1.8;
+	      this.setState({ name: name, weather: weather, description: description, country: country, temperature: temperature, bg: bg, celcius: celcius, fahrenheit: fahrenheit });
 	    }
 	  }, {
 	    key: "updateCity",
@@ -21602,9 +21608,20 @@
 	      console.log('dog');
 	    }
 	  }, {
+	    key: "changeUnit",
+	    value: function changeUnit() {
+	      if (this.state.unit == "C") {
+	        this.setState({ unit: "F" });
+	      } else {
+	        this.setState({ unit: "C" });
+	      }
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
-	      return _react2.default.createElement(_weather2.default, { name: this.state.name, weather: this.state.weather, description: this.state.description, country: this.state.country, temperature: this.state.temperature, bg: this.state.bg, oC: this.updateCity.bind(this) });
+	      var setUnit;
+	      this.state.unit == "C" ? setUnit = this.state.celcius : setUnit = this.state.fahrenheit;
+	      return _react2.default.createElement(_weather2.default, { name: this.state.name, weather: this.state.weather, description: this.state.description, country: this.state.country, temperature: setUnit, unit: this.state.unit, handleClick: this.changeUnit.bind(this), bg: this.state.bg, oC: this.updateCity.bind(this) });
 	    }
 	  }]);
 
@@ -21634,6 +21651,8 @@
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -21682,10 +21701,10 @@
 	                _react2.default.createElement(
 	                  "div",
 	                  { className: "input-group" },
-	                  _react2.default.createElement("input", { type: "text", className: "form-control city-input", "aria-describedby": "basic-addon1", placeholder: "Enter your city..." }),
+	                  _react2.default.createElement("input", { type: "text", id: "orange-bar", className: "form-control city-input", "aria-describedby": "basic-addon1", placeholder: "Enter your city..." }),
 	                  _react2.default.createElement(
 	                    "span",
-	                    { className: "input-group-addon", onClick: this.props.oC, id: "basic-addon1" },
+	                    _defineProperty({ id: "orange-button", className: "input-group-addon", onClick: this.props.oC }, "id", "basic-addon1"),
 	                    "Go"
 	                  )
 	                )
@@ -21704,6 +21723,11 @@
 	                "div",
 	                { className: "text-center" },
 	                this.props.temperature
+	              ),
+	              _react2.default.createElement(
+	                "div",
+	                { className: "circle-btn", onClick: this.props.handleClick },
+	                this.props.unit
 	              ),
 	              "\u3000\u3000    ",
 	              _react2.default.createElement(

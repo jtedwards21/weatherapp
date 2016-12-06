@@ -21,13 +21,13 @@ export default class Weather extends React.Component {
 	      <div className="info-box">
 		<div className="">
 		  <div className="input-group">
-		    <input type="text" className="form-control city-input" aria-describedby="basic-addon1"  placeholder="Enter your city..." />
-		    <span className="input-group-addon" onClick={this.props.oC} id="basic-addon1">Go</span>
+		    <input type="text" id="orange-bar" className="form-control city-input" aria-describedby="basic-addon1"  placeholder="Enter your city..." />
+		    <span id="orange-button" className="input-group-addon" onClick={this.props.oC} id="basic-addon1">Go</span>
 		  </div>
 		</div>
                 <div className="text-center">{this.props.name}</div>
 	        <div className="text-center">{this.props.weather}</div>
-	        <div className="text-center">{this.props.temperature}</div>
+	        <div className="text-center">{this.props.temperature}</div><div className="circle-btn" onClick={this.props.handleClick} >{this.props.unit}</div>
 	  　　    <div className="text-center"><img id="weather-img" src={this.props.bg} /></div>
 	      </div>
 	    </div>
