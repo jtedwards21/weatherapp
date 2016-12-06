@@ -24,11 +24,18 @@ export default class Start extends React.Component {
     this.updated = false;
 
   }
-  componentDidMount(){
-　　　　var city = this.props.city;
-    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
+  getDataFromCoord(lat, lon){
+    var coordurl = "api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon;
     axios.get(url)
     .then(data => {this.processData(data).bind(this)});
+  }
+  componentDidMount(){
+    navigator.geolocation.getCurrentPosition(function(position) {this.getDataFromCoord(position.coords.latitude, position.coords.longitude);});
+
+　　　　var city = this.props.city;
+    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
+    /*axios.get(url)
+    .then(data => {this.processData(data).bind(this)});*/
   }
   processData(data){
     console.log(data);
