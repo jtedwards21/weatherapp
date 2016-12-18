@@ -32,11 +32,6 @@ export default class Start extends React.Component {
   }
   componentDidMount(){
     navigator.geolocation.getCurrentPosition(function(position) {this.getDataFromCoord(position.coords.latitude, position.coords.longitude);});
-
-　　　　var city = this.props.city;
-    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
-    /*axios.get(url)
-    .then(data => {this.processData(data).bind(this)});*/
   }
   processData(data){
     console.log(data);
@@ -47,9 +42,9 @@ export default class Start extends React.Component {
     var description = weatherObject.description;
     var country = data.data.sys.country;
     var temperature = data.data.main.temp;
-    var celcius = temperature - 273.15;
+    var celcius = Math.round(temperature - 273.15);
     var fahrenheit = celcius + 40;
-    fahrenheit = fahrenheit * 1.8;
+    fahrenheit = Math.round(fahrenheit * 1.8);
     this.setState({name:name, weather:weather, description:description, country:country, temperature:temperature, bg: bg, celcius: celcius, fahrenheit: fahrenheit});
   }
   handleSearchChange(e){

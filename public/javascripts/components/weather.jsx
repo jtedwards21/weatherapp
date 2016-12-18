@@ -8,7 +8,9 @@ export default class Weather extends React.Component {
     this.props.handleSearchChange(e);
   }
   render() {
+    var s = {backgroundColor: "orange"};
     return (
+	<div id="background">
         <div id="weather-box">
 	　　<div className="row">
             <div className="inner-box col-md-4 col-md-offset-4">
@@ -17,17 +19,18 @@ export default class Weather extends React.Component {
 		<div className="">
 		  <div className="input-group">
 		    <input type="text" id="orange-bar" onChange={this.handleSearchChange.bind(this)} value={this.props.search} className="form-control city-input" aria-describedby="basic-addon1"  placeholder="Enter your city..." />
-		    <span id="orange-button" className="input-group-addon" onClick={this.props.oC} id="basic-addon1">Go</span>
+		    <span style={s} id="orange-button" className="input-group-addon" onClick={this.props.oC} id="basic-addon1">Go</span>
 		  </div>
 		</div>
                 <div className="text-center">{this.props.name}</div>
 	        <div className="text-center">{this.props.weather}</div>
-	        <div className="text-center">{this.props.temperature}</div><div className="circle-btn　text-center" onClick={this.props.handleClick} >{this.props.unit}</div>
-	  　　    <div className="text-center"><img id="weather-img" src={this.props.bg} /></div>
+	          <div className="text-center temperature" onClick={this.props.handleClick} >{this.props.temperature + "°"}{this.props.unit}</div>
+                <img id="weather-img" src={this.props.bg} />
 	      </div>
 	    </div>
 	  </div>
         </div>
+	</div>
     );
   }
 }

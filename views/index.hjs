@@ -6,7 +6,7 @@
     <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/bootstrap-theme.min.css' />
   </head>
-  <body　id="background">
+  <body>
     <div id="content">{{{markup}}}</div>
 
     <script src="public/javascripts/jquery-3.3.1.min.js"></script>

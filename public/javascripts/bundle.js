@@ -21592,11 +21592,6 @@
 	      navigator.geolocation.getCurrentPosition(function (position) {
 	        this.getDataFromCoord(position.coords.latitude, position.coords.longitude);
 	      });
-
-	      var city = this.props.city;
-	      var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
-	      /*axios.get(url)
-	      .then(data => {this.processData(data).bind(this)});*/
 	    }
 	  }, {
 	    key: "processData",
@@ -21609,9 +21604,9 @@
 	      var description = weatherObject.description;
 	      var country = data.data.sys.country;
 	      var temperature = data.data.main.temp;
-	      var celcius = temperature - 273.15;
+	      var celcius = Math.round(temperature - 273.15);
 	      var fahrenheit = celcius + 40;
-	      fahrenheit = fahrenheit * 1.8;
+	      fahrenheit = Math.round(fahrenheit * 1.8);
 	      this.setState({ name: name, weather: weather, description: description, country: country, temperature: temperature, bg: bg, celcius: celcius, fahrenheit: fahrenheit });
 	    }
 	  }, {
@@ -21660,7 +21655,7 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-			value: true
+	  value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21684,89 +21679,85 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Weather = function (_React$Component) {
-			_inherits(Weather, _React$Component);
+	  _inherits(Weather, _React$Component);
 
-			function Weather() {
-					_classCallCheck(this, Weather);
+	  function Weather() {
+	    _classCallCheck(this, Weather);
 
-					return _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).apply(this, arguments));
-			}
+	    return _possibleConstructorReturn(this, (Weather.__proto__ || Object.getPrototypeOf(Weather)).apply(this, arguments));
+	  }
 
-			_createClass(Weather, [{
-					key: "handleSearchChange",
-					value: function handleSearchChange(e) {
-							console.log('pop');
-							this.props.handleSearchChange(e);
-					}
-			}, {
-					key: "render",
-					value: function render() {
-							return _react2.default.createElement(
-									"div",
-									{ id: "weather-box" },
-									"\u3000\u3000",
-									_react2.default.createElement(
-											"div",
-											{ className: "row" },
-											_react2.default.createElement(
-													"div",
-													{ className: "inner-box col-md-4 col-md-offset-4" },
-													_react2.default.createElement(
-															"div",
-															{ id: "w-app", className: "title text-center" },
-															"Your Local Weather"
-													),
-													_react2.default.createElement(
-															"div",
-															{ className: "info-box text-center" },
-															_react2.default.createElement(
-																	"div",
-																	{ className: "" },
-																	_react2.default.createElement(
-																			"div",
-																			{ className: "input-group" },
-																			_react2.default.createElement("input", { type: "text", id: "orange-bar", onChange: this.handleSearchChange.bind(this), value: this.props.search, className: "form-control city-input", "aria-describedby": "basic-addon1", placeholder: "Enter your city..." }),
-																			_react2.default.createElement(
-																					"span",
-																					_defineProperty({ id: "orange-button", className: "input-group-addon", onClick: this.props.oC }, "id", "basic-addon1"),
-																					"Go"
-																			)
-																	)
-															),
-															_react2.default.createElement(
-																	"div",
-																	{ className: "text-center" },
-																	this.props.name
-															),
-															_react2.default.createElement(
-																	"div",
-																	{ className: "text-center" },
-																	this.props.weather
-															),
-															_react2.default.createElement(
-																	"div",
-																	{ className: "text-center" },
-																	this.props.temperature
-															),
-															_react2.default.createElement(
-																	"div",
-																	{ className: "circle-btn\u3000text-center", onClick: this.props.handleClick },
-																	this.props.unit
-															),
-															"\u3000\u3000    ",
-															_react2.default.createElement(
-																	"div",
-																	{ className: "text-center" },
-																	_react2.default.createElement("img", { id: "weather-img", src: this.props.bg })
-															)
-													)
-											)
-									)
-							);
-					}
-			}]);
+	  _createClass(Weather, [{
+	    key: "handleSearchChange",
+	    value: function handleSearchChange(e) {
+	      console.log('pop');
+	      this.props.handleSearchChange(e);
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var s = { backgroundColor: "orange" };
+	      return _react2.default.createElement(
+	        "div",
+	        { id: "background" },
+	        _react2.default.createElement(
+	          "div",
+	          { id: "weather-box" },
+	          "\u3000\u3000",
+	          _react2.default.createElement(
+	            "div",
+	            { className: "row" },
+	            _react2.default.createElement(
+	              "div",
+	              { className: "inner-box col-md-4 col-md-offset-4" },
+	              _react2.default.createElement(
+	                "div",
+	                { id: "w-app", className: "title text-center" },
+	                "Your Local Weather"
+	              ),
+	              _react2.default.createElement(
+	                "div",
+	                { className: "info-box text-center" },
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "" },
+	                  _react2.default.createElement(
+	                    "div",
+	                    { className: "input-group" },
+	                    _react2.default.createElement("input", { type: "text", id: "orange-bar", onChange: this.handleSearchChange.bind(this), value: this.props.search, className: "form-control city-input", "aria-describedby": "basic-addon1", placeholder: "Enter your city..." }),
+	                    _react2.default.createElement(
+	                      "span",
+	                      _defineProperty({ style: s, id: "orange-button", className: "input-group-addon", onClick: this.props.oC }, "id", "basic-addon1"),
+	                      "Go"
+	                    )
+	                  )
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "text-center" },
+	                  this.props.name
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "text-center" },
+	                  this.props.weather
+	                ),
+	                _react2.default.createElement(
+	                  "div",
+	                  { className: "text-center temperature", onClick: this.props.handleClick },
+	                  this.props.temperature + "°",
+	                  this.props.unit
+	                ),
+	                _react2.default.createElement("img", { id: "weather-img", src: this.props.bg })
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
 
-			return Weather;
+	  return Weather;
 	}(_react2.default.Component);
 
 	exports.default = Weather;
