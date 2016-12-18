@@ -9,6 +9,7 @@ export default class Start extends React.Component {
     super(props);
 
     this.state = {
+      search: "",
       city: "--",
       name: "--",
       weather: "--",
@@ -51,8 +52,14 @@ export default class Start extends React.Component {
     fahrenheit = fahrenheit * 1.8;
     this.setState({name:name, weather:weather, description:description, country:country, temperature:temperature, bg: bg, celcius: celcius, fahrenheit: fahrenheit});
   }
+  handleSearchChange(e){
+    this.setState({search: e.target.value});
+  }
   updateCity() {
-    console.log('dog');
+    var city = this.state.search;
+    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
+    axios.get(url)
+    .then(data => {this.processData(data).bind(this)});
   }
   changeUnit() {
     if(this.state.unit == "C"){
@@ -65,7 +72,7 @@ export default class Start extends React.Component {
     var setUnit;
     (this.state.unit == "C") ? setUnit = this.state.celcius : setUnit = this.state.fahrenheit;
     return (
-      <Weather name={this.state.name} weather={this.state.weather} description={this.state.description} country={this.state.country} temperature={setUnit} unit={this.state.unit} handleClick={this.changeUnit.bind(this)} bg={this.state.bg} oC={this.updateCity.bind(this)} />
+      <Weather handleSearchChange={this.handleSearchChange.bind(this)} search={this.state.search} name={this.state.name} weather={this.state.weather} description={this.state.description} country={this.state.country} temperature={setUnit} unit={this.state.unit} handleClick={this.changeUnit.bind(this)} bg={this.state.bg} oC={this.updateCity.bind(this)} />
     );
   }
 }
