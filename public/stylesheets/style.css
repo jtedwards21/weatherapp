@@ -34,6 +34,27 @@ body {
 　　height: 100%;
 }
 
+
+a {
+  color: black;
+}
+
+#github-img {
+  width: 50px;
+  color: black;
+}
+
+#github-container {
+  color: black;
+　　position: absolute;
+  top: 80vh;
+}
+
+#github-container p {
+  font-family: Denominator;
+  font-size: 1.5em;
+}
+
 #weather-box{
   margin-top: 50px;
   background-color: #7F3300;
