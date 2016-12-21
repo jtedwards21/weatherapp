@@ -24,4 +24,12 @@ router.get("/ip", function(req, res) {
   request(options, callback);
 });
 
+router.get("/weather/:city", function(req, res) {
+  var url = "http://api.openweathermap.org/data/2.5/weather?q=" + req.params.city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
+  
+  var options = {url: url}
+  var callback = function(err, response, body){ res.send(body);}
+  request(options, callback);
+});
+
 module.exports = router;

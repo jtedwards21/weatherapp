@@ -21581,7 +21581,7 @@
 	    value: function componentDidMount() {
 	      var _this2 = this;
 
-	      var url = "http://ipinfo.io/json";
+	      var url = "/ip";
 	      _axios2.default.get(url).then(function (data) {
 	        _this2.updateInfo(data.data.city).bind(_this2);
 	      });
@@ -21591,7 +21591,7 @@
 	    value: function updateInfo(city) {
 	      var _this3 = this;
 
-	      var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
+	      var url = "/weather/" + city;
 	      _axios2.default.get(url).then(function (data) {
 	        _this3.processData(data).bind(_this3);
 	      });
@@ -21623,7 +21623,7 @@
 	      var _this4 = this;
 
 	      var city = this.state.search;
-	      var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
+	      var url = "/weather/" + city;
 	      _axios2.default.get(url).then(function (data) {
 	        _this4.processData(data).bind(_this4);
 	      });

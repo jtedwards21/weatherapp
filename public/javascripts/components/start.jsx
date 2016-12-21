@@ -26,12 +26,12 @@ export default class Start extends React.Component {
 
   }
   componentDidMount(){
-    var url = "http://ipinfo.io/json";
+    var url = "/ip";
     axios.get(url)
     .then(data => {this.updateInfo(data.data.city).bind(this)});
   }
   updateInfo(city){
-    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
+    var url = "/weather/" + city;
     axios.get(url)
     .then(data => {this.processData(data).bind(this)});
   }
@@ -54,7 +54,7 @@ export default class Start extends React.Component {
   }
   updateCity() {
     var city = this.state.search;
-    var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
+    var url = "/weather/" + city;
     axios.get(url)
     .then(data => {this.processData(data).bind(this)});
   }
