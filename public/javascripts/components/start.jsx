@@ -2,6 +2,7 @@ import React from "react";
 import Weather from "./weather";
 import axios from "axios";
 import ReactDOM from "react-dom";
+import jsonp from "jsonp";
 
 
 export default class Start extends React.Component {
@@ -26,9 +27,9 @@ export default class Start extends React.Component {
 
   }
   componentDidMount(){
-    var url = "/ip";
-    axios.get(url)
-    .then(data => {this.updateInfo(data.data.city).bind(this)});
+    var url = "http://ipinfo.io/json";
+    var that = this;
+    jsonp(url,function(err, data){that.updateInfo(data.city).bind(that)}) ;
   }
   updateInfo(city){
     var url = "/weather/" + city;
