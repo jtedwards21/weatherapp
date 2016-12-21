@@ -21592,6 +21592,7 @@
 	      var _this3 = this;
 
 	      var url = "/weather/" + city;
+	      console.log(city);
 	      _axios2.default.get(url).then(function (data) {
 	        _this3.processData(data).bind(_this3);
 	      });

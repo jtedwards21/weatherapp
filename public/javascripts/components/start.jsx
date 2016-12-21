@@ -32,6 +32,7 @@ export default class Start extends React.Component {
   }
   updateInfo(city){
     var url = "/weather/" + city;
+    console.log(city);
     axios.get(url)
     .then(data => {this.processData(data).bind(this)});
   }
