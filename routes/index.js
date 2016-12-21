@@ -17,8 +17,7 @@ router.get("/", function(req, res) {
 });
 
 router.get("/ip", function(req, res) {
-  var url = 'http://ipinfo.io/json'
-
+  var url = 'http://ipinfo.io/' + req.ip + '/json'
   var options = {url: url}
   var callback = function(err, response, body){ res.send(body);}
   request(options, callback);
