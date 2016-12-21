@@ -21577,20 +21577,23 @@
 	  }
 
 	  _createClass(Start, [{
-	    key: "getDataFromCoord",
-	    value: function getDataFromCoord(lat, lon) {
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
 	      var _this2 = this;
 
-	      var coordurl = "api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon;
+	      var url = "http://ipinfo.io/json";
 	      _axios2.default.get(url).then(function (data) {
-	        _this2.processData(data).bind(_this2);
+	        _this2.updateInfo(data.data.city).bind(_this2);
 	      });
 	    }
 	  }, {
-	    key: "componentDidMount",
-	    value: function componentDidMount() {
-	      navigator.geolocation.getCurrentPosition(function (position) {
-	        this.getDataFromCoord(position.coords.latitude, position.coords.longitude);
+	    key: "updateInfo",
+	    value: function updateInfo(city) {
+	      var _this3 = this;
+
+	      var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
+	      _axios2.default.get(url).then(function (data) {
+	        _this3.processData(data).bind(_this3);
 	      });
 	    }
 	  }, {
@@ -21617,12 +21620,12 @@
 	  }, {
 	    key: "updateCity",
 	    value: function updateCity() {
-	      var _this3 = this;
+	      var _this4 = this;
 
 	      var city = this.state.search;
 	      var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=92ce1e2eee7c91cb43470cada0b7c4d8";
 	      _axios2.default.get(url).then(function (data) {
-	        _this3.processData(data).bind(_this3);
+	        _this4.processData(data).bind(_this4);
 	      });
 	    }
 	  }, {
@@ -21637,6 +21640,7 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
+	      console.log(this.state.city);
 	      var setUnit;
 	      this.state.unit == "C" ? setUnit = this.state.celcius : setUnit = this.state.fahrenheit;
 	      return _react2.default.createElement(_weather2.default, { handleSearchChange: this.handleSearchChange.bind(this), search: this.state.search, name: this.state.name, weather: this.state.weather, description: this.state.description, country: this.state.country, temperature: setUnit, unit: this.state.unit, handleClick: this.changeUnit.bind(this), bg: this.state.bg, oC: this.updateCity.bind(this) });
@@ -21709,7 +21713,7 @@
 	            { className: "row" },
 	            _react2.default.createElement(
 	              "div",
-	              { className: "inner-box col-md-4 col-md-offset-4" },
+	              { className: "inner-box col-md-8 col-md-offset-2" },
 	              _react2.default.createElement(
 	                "div",
 	                { id: "w-app", className: "title text-center" },

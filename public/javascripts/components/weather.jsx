@@ -13,7 +13,7 @@ export default class Weather extends React.Component {
 	<div id="background">
         <div id="weather-box">
 	　　<div className="row">
-            <div className="inner-box col-md-4 col-md-offset-4">
+            <div className="inner-box col-md-8 col-md-offset-2">
               <div id="w-app" className="title text-center">Your Local Weather</div>
 	      <div className="info-box text-center">
 		<div className="">
