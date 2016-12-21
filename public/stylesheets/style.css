@@ -34,25 +34,29 @@ body {
 　　height: 100%;
 }
 
+#link-container {
 
-a {
-  color: black;
+  position: fixed;
+  top: 95vh;
 }
 
-#github-img {
+#github-img{
   width: 50px;
-  color: black;
+}
+
+a {
+  color: #52486F;
 }
 
 #github-container {
-  color: black;
-　　position: absolute;
-  top: 80vh;
+  width: 300px;
+  text-align: center;
 }
 
 #github-container p {
-  font-family: Denominator;
+  font-family: Sugar;
   font-size: 1.5em;
+  color: black;
 }
 
 #weather-box{
