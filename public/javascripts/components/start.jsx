@@ -3,6 +3,7 @@ import Weather from "./weather";
 import axios from "axios";
 import ReactDOM from "react-dom";
 import jsonp from "jsonp";
+import JQuery from "jquery";
 
 
 export default class Start extends React.Component {
@@ -27,9 +28,11 @@ export default class Start extends React.Component {
 
   }
   componentDidMount(){
-    var url = "http://ipinfo.io/json";
     var that = this;
-    jsonp(url,function(err, data){that.updateInfo(data.city).bind(that)}) ;
+    JQuery.getJSON("http://ipinfo.io/json?callback=?", function(result){
+   //response data are now in the result variable
+       that.updateInfo(result.city).bind(that)
+    });
   }
   updateInfo(city){
     var url = "/weather/" + city;
